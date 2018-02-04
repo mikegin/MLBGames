@@ -16,8 +16,8 @@ function validDate(d) {
 	}
 }
 
-function clearTable(tableName) {
-	var table = document.getElementById(tableName);
+function clearTable(tableId) {
+	var table = document.getElementById(tableId);
 	while (table.firstChild) {
 	    table.removeChild(table.firstChild);
 	}
@@ -27,9 +27,7 @@ function clearTable(tableName) {
 function addBoldToTableRow(tableRowId) {
 	var tr = document.getElementById(tableRowId);
 	for(var i = 0; i < tr.childNodes.length; i++) {
-		var b = document.createElement('b');
-	    b.appendChild(tr.childNodes[i].firstChild);
-	    tr.childNodes[i].appendChild(b);
+	    addBold(tr.childNodes[i]);
 	}
 }
 
