@@ -1,0 +1,8 @@
+.scrollForTable {
+    overflow:scroll;
+    max-height:350px;
+	width:210px;
+}
+.gamesTable {
+	width:200px;
+}

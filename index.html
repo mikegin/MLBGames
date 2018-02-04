@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	 <script src="myjs.js"></script>
+	 <script src="helpers.js"></script>
+</head>
+<body>
+	<div align="center">
+		
+		<input type="date" id="myDate" onchange="getMLBGames()"/>
+		<!--<input type="button" value="Next" onclick="next()"/>-->
+		<div class="scrollForTable">
+			<table id="myTable" class="gamesTable" border=1 rules=groups>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
