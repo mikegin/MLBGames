@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="gamesStyle.css">
 	<script 
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
 	</script>
@@ -9,17 +10,32 @@
 	<script src="helpers.js"></script>
 </head>
 <body>
-	<div align="center">
-		<table id="innings">
-		</table>
-		<table id="teamToggle">
+	<div id="mainStatsDiv" align="center">
+		<table>
 			<tr>
-				<td id="homeTeam" onclick="toggle(this)"></td>
-				<td>|</td>
-				<td id="awayTeam" onclick="toggle(this)"></td>
+				<td>
+					<table id="innings">
+					</table>
+				</td>
 			</tr>
-		</table>
-		<table id="playerStats">
+			<tr>
+				<td>
+					<div id="teamToggleDiv">
+						<table id="teamToggle">
+							<tr>
+								<td id="homeTeam" onclick="toggle(this)"></td>
+								<td>|</td>
+								<td id="awayTeam" onclick="toggle(this)"></td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table id="playerStats"></table>
+				</td>
+			</tr>
 		</table>
 	</div>
 </body>

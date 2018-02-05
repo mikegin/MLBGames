@@ -10,11 +10,26 @@
 	 <script src="helpers.js"></script>
 </head>
 <body>
-	<div align="center">
-		<input type="date" id="gamesDate" onchange="getMLBGames()"/>
-		<div class="scrollForTable">
-			<table id="gamesTable" class="gamesTable" border=1 rules=groups>
-			</table>
+	<div id="mainDiv">
+		<table id="inputTable">
+			<tr>
+				<td id="gamesDateTd">
+					<input type="date" id="gamesDate" onchange="getMLBGames()"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Favourite Team:
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<select id="favTeam" onclick="populateFavouriteSelect()"></select>
+				</td>
+			</tr>
+		</table>
+		<div id="scrollForTable">
+			<table id="gamesTable" border=1 rules=groups></table>
 		</div>
 	</div>
 </body>

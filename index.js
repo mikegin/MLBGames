@@ -35,7 +35,7 @@ function createGamesTable(gamesJson) {
 	clearTable("gamesTable");
 
 	//no games
-	if(gamesJson === undefined || gamesJson === null) {//go over this, null vs undefined
+	if(!gamesJson) {
 		addGameToTable(0, null, false);
 	}
 	//multiple games
@@ -70,9 +70,15 @@ function addGameToTable(gameIndex, game, hasGames) {
 
 		var tableContents = createGameTBody(game, homeId, awayId);
 
-    	//put jays games first
-    	if(game.home_team_name === "Blue Jays" || 
-    			game.away_team_name === "Blue Jays") {
+		var favTeam = document.getElementById("favTeam");
+		var favTeamName;
+		if(favTeam.selectedIndex > -1) {
+			favTeamName = favTeam.options[favTeam.selectedIndex].text;
+		}
+		
+		//put favourite team games first
+    	if(game.home_team_name === favTeamName || 
+    			game.away_team_name === favTeamName) {
 			$("#gamesTable").prepend(tableContents);
 		} else {
 			$("#gamesTable").append(tableContents);	
@@ -92,8 +98,8 @@ function addGameToTable(gameIndex, game, hasGames) {
 }
 
 function createGameTBody(game, homeId, awayId) {
-	tableContents = "<tbody data-directory=" + 
-		game.game_data_directory + " onclick=getGameStats(this)>";
+	tableContents = "<tbody data-directory=" + game.game_data_directory + 
+	" data-status=" + game.status.status + " onclick=getGameStats(this)>";
 
 	//add home row
 	tableContents += "<tr id=" + homeId + ">";
@@ -124,10 +130,38 @@ function createGameTBody(game, homeId, awayId) {
 }
 
 function getGameStats(game) {
-	var dir = $(game).data("directory");
+	var statusBlacklist = ["Cancelled", "Postponed", "Preview"];
 
-	sessionStorage.setItem("0", dir);
+	var status = $(game).data("status");
 
-	window.location.href = "gameStats.html";
-	
+	if(!contains.call(statusBlacklist, status)) {
+		var dir = $(game).data("directory");
+		
+		sessionStorage.setItem("0", dir);
+
+		window.location.href = "gameStats.html";
+	}
+}
+
+function populateFavouriteSelect() {
+	var teamList = ["Blue Jays", "Orioles", "White Sox", "Indians", "Tigers", 
+		"Astros", "City Royals", "Angels", "Twins", "Yankees", "Athletics", 
+		"Mariners", "Rays", "Rangers", "Diamondbacks", "Braves", "Cubs", "Reds",
+		"Rockies", "Dodgers", "Marlins", "Brewers", "Mets", "Phillies", 
+		"Pirates", "Padres", "Giants", "Cardinals", "Nationals"];
+
+	teamList.sort();
+
+	var selectFav = document.getElementById("favTeam");
+
+	if(selectFav.childNodes.length === 0) {
+		$.each(
+		    teamList ,
+		    function(i,v) {
+		    	var option = document.createElement("option");
+		    	option.text = v;
+		    	selectFav.appendChild(option);
+		    }
+		);
+	}
 }

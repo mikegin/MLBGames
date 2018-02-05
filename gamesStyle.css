@@ -1,8 +1,40 @@
-.scrollForTable {
-    overflow:scroll;
-    max-height:350px;
-	width:210px;
+#mainDiv {
+	width: 286px;
+	margin-left: auto;
+	margin-right: auto;
+	color: white;
+	background-color: black;
 }
-.gamesTable {
-	width:200px;
+#inputTable {
+	margin: auto;
+}
+#gamesDateTd {
+	padding-bottom: 15px;
+}
+#gamesDate {
+	margin: auto;
+}
+#scrollForTable {
+    overflow: scroll;
+    max-height: 350px;
+}	
+#gamesTable {
+	margin-left: 1px;
+	width: 275px;
+}
+td {
+	padding: 5px;
+}
+#mainStatsDiv {
+	margin-left: auto;
+	margin-right: auto;
+	color: white;
+	background-color: black;
+	width: 350px;
+}
+#teamToggleDiv {
+	text-align: center;
+}
+#teamToggle {
+	margin: auto;
 }
